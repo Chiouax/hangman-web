@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman - Archives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container scores">
+        <h1>Archives de Mission</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Niveau</th>
+                        <th>Code Secret</th>
+                        <th>Statut</th>
+                        <th>Horodatage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .Scores}}
+                    <tr class="score-row {{if .IsVictory}}success{{else}}error{{end}}">
+                        <td>
+                            <div class="agent-info">
+                                <span class="agent-id">{{.PlayerName}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="difficulty-badge {{.Difficulty}}">
+                                {{if eq .Difficulty "easy"}}Niveau 1
+                                {{else if eq .Difficulty "medium"}}Niveau 2
+                                {{else}}Niveau 3{{end}}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="secret-code">{{.Word}}</div>
+                        </td>
+                        <td>
+                            <div class="status-badge {{if .IsVictory}}success{{else}}error{{end}}">
+                                {{if .IsVictory}}Mission Réussie{{else}}Mission Échouée{{end}}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="timestamp">{{.Date}}</div>
+                        </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+        <div class="actions">
+            <a href="/" class="button">Nouvelle Mission</a>
+        </div>
+    </div>
+</body>
+</html>

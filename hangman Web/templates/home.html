@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman - Accueil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hangman 2077</h1>
+        <form action="/start" method="POST">
+            <div class="form-group">
+                <label for="playerName">Code d'Agent</label>
+                <input type="text" id="playerName" name="playerName" required placeholder="Entrez votre identifiant...">
+            </div>
+            <div class="form-group">
+                <label for="difficulty">Niveau de Sécurité</label>
+                <select id="difficulty" name="difficulty" required>
+                    <option value="easy">Niveau 1 - Débutant</option>
+                    <option value="medium">Niveau 2 - Avancé</option>
+                    <option value="hard">Niveau 3 - Expert</option>
+                </select>
+            </div>
+            <button type="submit">Initialiser la Mission</button>
+        </form>
+        <a href="/scores" class="scores-link">Consulter les Archives</a>
+    </div>
+</body>
+</html>

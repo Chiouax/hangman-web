@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman - Mission en cours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container game">
+        <div class="game-info">
+            <p>Agent: <span class="neon-text">{{.PlayerName}}</span></p>
+            <p>Vies Systèmes: <span class="neon-text">{{.RemainingLives}}</span></p>
+        </div>
+        
+        <div class="hangman-display">
+            <!-- Image avec gestion d'erreur -->
+            <img src="/static/images/hangman-{{.RemainingLives}}.png" 
+                 alt="État système" 
+                 class="game-image"
+                 onerror="handleImageError(this)"
+                 onload="handleImageLoad(this)">
+                 
+            <!-- Message d'erreur caché -->
+            <div id="imageError" style="display:none; color: red;">
+                Erreur de chargement de l'image
+            </div>
+        </div>
+
+        <div class="word-display">
+            {{.HiddenWord}}
+        </div>
+        
+        <div class="tried-letters">
+            Tentatives précédentes: 
+            {{range .TriedLetters}}
+            <span>{{.}}</span>
+            {{end}}
+        </div>
+        
+        {{if .Message}}
+        <div class="message {{if .IsCorrect}}success{{else}}error{{end}}">
+            {{.Message}}
+        </div>
+        {{end}}
+        
+        <form action="/play" method="POST">
+            <div class="form-group">
+                <input type="text" name="guess" maxlength="1" pattern="[A-Za-z]" required 
+                       placeholder="Entrez une lettre..." autocomplete="off">
+                <button type="submit">Tenter</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+    // Fonction pour gérer les erreurs de chargement d'image
+    function handleImageError(img) {
+        console.error('Erreur de chargement de l\'image:', img.src);
+        document.getElementById('imageError').style.display = 'block';
+        img.style.display = 'none';
+    }
+
+    // Fonction pour gérer le chargement réussi d'image
+    function handleImageLoad(img) {
+        console.log('Image chargée avec succès:', img.src);
+        document.getElementById('imageError').style.display = 'none';
+        img.style.display = 'block';
+    }
+
+    // Vérification au chargement de la page
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page chargée');
+        var remainingLives = {{.RemainingLives}};
+        var imagePath = '/static/images/hangman-' + remainingLives + '.png';
+        console.log('Vies restantes:', remainingLives);
+        console.log('Chemin de l\'image:', imagePath);
+    });
+    </script>
+</body>
+</html>
