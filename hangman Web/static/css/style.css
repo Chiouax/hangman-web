@@ -10,7 +10,7 @@
     --border-glow: 0 0 10px var(--neon-primary);
 }
 
-/* Base styles */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,7 +29,7 @@ body {
         linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
 }
 
-/* Container */
+
 .container {
     max-width: 800px;
     margin: 2rem auto;
@@ -42,7 +42,7 @@ body {
     animation: containerGlow 4s infinite;
 }
 
-/* Headers */
+
 h1 {
     text-align: center;
     margin-bottom: 2rem;
@@ -54,7 +54,7 @@ h1 {
     animation: titlePulse 2s infinite;
 }
 
-/* Form Elements */
+
 .form-group {
     margin-bottom: 1.5rem;
     position: relative;
@@ -88,7 +88,7 @@ select:focus {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Game Info */
+
 .game-info {
     display: flex;
     justify-content: space-between;
@@ -104,7 +104,7 @@ select:focus {
     text-shadow: 0 0 5px var(--neon-primary);
 }
 
-/* Hangman Display */
+
 .hangman-display {
     text-align: center;
     margin: 2rem 0;
@@ -155,7 +155,7 @@ select:focus {
             drop-shadow(0 0 30px rgba(0, 255, 255, 0.7));
 }
 
-/* Word Display */
+
 .word-display {
     text-align: center;
     font-size: 3rem;
@@ -166,7 +166,7 @@ select:focus {
     animation: wordPulse 2s infinite;
 }
 
-/* Tried Letters */
+
 .tried-letters {
     text-align: center;
     margin: 2rem 0;
@@ -185,7 +185,7 @@ select:focus {
     animation: letterAppear 0.3s ease-out forwards;
 }
 
-/* Buttons and Actions */
+
 button,
 .button {
     display: inline-block;
@@ -230,7 +230,7 @@ button::before,
     margin-top: 2rem;
 }
 
-/* Messages */
+
 .message {
     text-align: center;
     padding: 1rem;
@@ -251,7 +251,7 @@ button::before,
     color: var(--error-color);
 }
 
-/* Scores Table */
+
 .table-container {
     overflow-x: auto;
     margin: 2rem 0;
@@ -292,7 +292,7 @@ td {
     transform: scale(1.01);
 }
 
-/* Animations */
+
 @keyframes containerGlow {
     0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.1); }
     50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.2); }
@@ -355,7 +355,7 @@ td {
     }
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .container {
         margin: 1rem;
@@ -397,7 +397,7 @@ td {
     }
 }
 
-/* Debug Styles */
+
 #imageError {
     position: absolute;
     top: 50%;
@@ -411,7 +411,6 @@ td {
     z-index: 3;
 }
 
-/* Image States */
 .damage-flash {
     animation: damageFlash 0.5s ease-out;
 }

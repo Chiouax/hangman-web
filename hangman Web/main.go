@@ -42,20 +42,17 @@ var (
 )
 
 func main() {
-	// Initialisation du générateur de nombres aléatoires
+
 	rand.Seed(time.Now().UnixNano())
 
-	// Routes statiques avec logging
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", logStaticFiles(fs)))
 
-	// Routes des pages
 	http.HandleFunc("/", handleHome)
 	http.HandleFunc("/game", handleGame)
 	http.HandleFunc("/end", handleEnd)
 	http.HandleFunc("/scores", handleScores)
 
-	// Routes d'action
 	http.HandleFunc("/start", handleStartGame)
 	http.HandleFunc("/play", handlePlayTurn)
 
@@ -102,7 +99,7 @@ func handleStartGame(w http.ResponseWriter, r *http.Request) {
 	game := &GameState{
 		PlayerName:     playerName,
 		Difficulty:     difficulty,
-		RemainingLives: 6, // Commence à 6 pour les images 0-6
+		RemainingLives: 6,
 		Word:           word,
 		HiddenWord:     hiddenWord,
 		TriedLetters:   make([]string, 0),
@@ -173,7 +170,7 @@ func handlePlayTurn(w http.ResponseWriter, r *http.Request) {
 
 	if len(guess) == 1 {
 		letter := guess
-		// Vérifie si la lettre a déjà été essayée
+
 		for _, tried := range game.TriedLetters {
 			if tried == letter {
 				game.Message = "Vous avez déjà essayé cette lettre !"

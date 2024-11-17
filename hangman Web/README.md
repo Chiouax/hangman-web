@@ -22,8 +22,7 @@ git clone [votre-url-de-repo]
 cd hangman-web
 ```
 
-2. Assurez-vous que la structure des dossiers est correcte :
-```
+2. 
 hangman-web/
 ├── main.go
 ├── static/
@@ -126,7 +125,6 @@ Le serveur démarre sur `http://localhost:8080`
 
 ## Équipe
 
-- VOTRE_NOM (@votre_github)
   - Développement backend
   - Logique de jeu
   - Gestion du projet
