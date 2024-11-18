@@ -1,4 +1,4 @@
-# hangman-web
+
 # Hangman Web
 
 Un jeu du pendu en ligne avec une interface futuriste, développé en Go.
